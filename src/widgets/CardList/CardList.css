@@ -6,3 +6,15 @@
   gap: 3rem;
   flex-wrap: wrap;
 }
+
+.cards__not-found {
+  position: relative;
+  left: 45%;
+  font-size: 3rem;
+}
+
+.cards__loader {
+  position: relative;
+  left: 45%;
+  font-size: 3rem;
+}

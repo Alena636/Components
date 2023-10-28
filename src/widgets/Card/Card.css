@@ -1,0 +1,30 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 10%;
+  width: 16%;
+  text-align: center;
+  align-items: center;
+  transition: 0.7s;
+}
+
+.card__name {
+  font-size: 1.4rem;
+  width: 84%;
+  border-bottom: 3px solid lightgray;
+}
+
+.card__height,
+.card__mass,
+.card__gender {
+  font-size: 1rem;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.card:hover {
+  transform: scale(1.1);
+}

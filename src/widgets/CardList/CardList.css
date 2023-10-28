@@ -1,0 +1,8 @@
+.cards__wrapper {
+  padding-top: 4rem;
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+}

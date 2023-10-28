@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { Card } from '../../types';
 import CardElement from '../Card/Card';
+import './CardList.css';
 
 type CardListProps = {
   items: Card[];

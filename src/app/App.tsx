@@ -1,7 +1,9 @@
+import SearchForm from "../widgets/SearchForm/SearchForm";
+
 function App() {
   return (
     <>
-      <p>Search</p>
+      <SearchForm />
     </>
   );
 }

@@ -1,9 +1,11 @@
-import SearchForm from '../widgets/SearchForm/SearchForm';
+// import SearchForm from '../widgets/SearchForm/SearchForm';
+
+import MainPage from '../pages/Main/Main';
 
 function App() {
   return (
     <>
-      <SearchForm />
+      <MainPage />
     </>
   );
 }

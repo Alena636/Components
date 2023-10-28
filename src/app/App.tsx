@@ -1,4 +1,4 @@
-import SearchForm from "../widgets/SearchForm/SearchForm";
+import SearchForm from '../widgets/SearchForm/SearchForm';
 
 function App() {
   return (

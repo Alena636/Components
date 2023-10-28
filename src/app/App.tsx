@@ -1,7 +1,7 @@
 function App() {
   return (
     <>
-    <p>Search</p>
+      <p>Search</p>
     </>
   );
 }

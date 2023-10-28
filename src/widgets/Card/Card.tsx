@@ -1,7 +1,7 @@
-import React from 'react';
+import { Component } from 'react';
 import { CardProps } from '../../types';
 
-export default class CardElement extends React.Component<CardProps> {
+export default class CardElement extends Component<CardProps> {
   render() {
     const { people } = this.props;
     return (

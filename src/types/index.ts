@@ -1,5 +1,5 @@
 export type CardProps = {
-  key: number;
+  ind: number;
   people: Card;
 };
 

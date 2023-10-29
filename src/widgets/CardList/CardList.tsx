@@ -71,7 +71,7 @@ export default class CardList extends Component<CardListResult, CardListProps> {
       return <p>Error</p>;
     }
     if (!isLoaded) {
-      return <p className="cards__loader">Load ...</p>;
+      return <p className="cards__loader">Loading...</p>;
     }
     if (items.length === 0) {
       return <p className="cards__not-found">Nothing found</p>;

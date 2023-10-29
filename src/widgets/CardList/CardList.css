@@ -9,12 +9,20 @@
 
 .cards__not-found {
   position: relative;
-  left: 45%;
+  max-width: 300px;
+  padding-top: 8rem;
+  margin: 0 auto;
   font-size: 3rem;
+  font-weight: bold;
+  color: black;
 }
 
 .cards__loader {
   position: relative;
-  left: 45%;
+  max-width: 200px;
+  margin: 0 auto;
+  padding-top: 8rem;
   font-size: 3rem;
+  color: black;
+  font-weight: bold;
 }

@@ -24,7 +24,7 @@ export default class SearchForm extends Component<
   handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
     this.setState({ inputValue });
-    localStorage.setItem('value', inputValue);
+    localStorage.setItem('value', inputValue.trim());
   };
 
   handleClick = (e: React.FormEvent) => {

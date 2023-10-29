@@ -1,0 +1,9 @@
+.error {
+  font-size: 3rem;
+  position: relative;
+  max-width: 1440px;
+  margin: 0 auto;
+  margin-top: 20%;
+  word-wrap: break-word;
+  text-align: center;
+}

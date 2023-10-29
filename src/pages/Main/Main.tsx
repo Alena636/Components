@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import SearchForm from '../../widgets/SearchForm/SearchForm';
 import CardList from '../../widgets/CardList/CardList';
+import ErrorButton from '../../widgets/ErrorButton/ErrorButton';
 
 type MainProps = {
   children?: JSX.Element;
@@ -24,6 +25,7 @@ export default class MainPage extends Component<MainProps, MainState> {
   render() {
     return (
       <div className="main__container">
+        <ErrorButton />
         <SearchForm onSubmit={this.updateSearchValue} />
         <CardList data={this.state.searchValue} />
       </div>

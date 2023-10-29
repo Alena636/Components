@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../SearchForm/searchForm.css';
+// import ErrorButton from '../ErrorButton/ErrorButton';
 
 type SearchFormProps = {
   children?: JSX.Element;
@@ -50,17 +51,20 @@ export default class SearchForm extends Component<
   render() {
     const { inputValue } = this.state;
     return (
-      <form className="search__form" onSubmit={this.handleClick}>
-        <input
-          className="search__input"
-          type="text"
-          value={inputValue}
-          onChange={this.handleChangeInput}
-        />
-        <button className="search__btn" type="submit">
-          Search
-        </button>
-      </form>
+      <>
+        {/* <ErrorButton /> */}
+        <form className="search__form" onSubmit={this.handleClick}>
+          <input
+            className="search__input"
+            type="text"
+            value={inputValue}
+            onChange={this.handleChangeInput}
+          />
+          <button className="search__btn" type="submit">
+            Search
+          </button>
+        </form>
+      </>
     );
   }
 }

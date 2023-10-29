@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ErrorButton from '../ErrorButton/ErrorButton';
-import '../SearchForm/searchForm.css';
+import './SearchForm.css';
 
 type SearchFormProps = {
   children?: JSX.Element;

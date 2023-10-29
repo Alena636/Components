@@ -1,5 +1,3 @@
-// import SearchForm from '../widgets/SearchForm/SearchForm';
-
 import MainPage from '../pages/Main/Main';
 
 function App() {

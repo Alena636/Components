@@ -1,13 +1,22 @@
+.search__container {
+  padding-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1440px;
+  margin:  0 auto;
+}
+
 .search__form {
+  width: 40%;
   position: relative;
-  left: 26%;
   display: flex;
 }
 
 .search__input {
   padding: 10px 15px;
-  max-width: 40%;
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1.5em;
   color: #373d41;
   background-color: #fff;

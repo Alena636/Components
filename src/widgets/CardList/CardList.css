@@ -7,6 +7,13 @@
   flex-wrap: wrap;
 }
 
+@media screen and (max-width: 1032px) {
+  .cards__wrapper {
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 .cards__not-found {
   position: relative;
   max-width: 300px;

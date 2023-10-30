@@ -51,7 +51,7 @@ export default class SearchForm extends Component<
   render() {
     const { inputValue } = this.state;
     return (
-      <div className="search__container">
+      <section className="search__container">
         <ErrorButton />
         <form className="search__form" onSubmit={this.handleClick}>
           <input
@@ -64,7 +64,7 @@ export default class SearchForm extends Component<
             Search
           </button>
         </form>
-      </div>
+      </section>
     );
   }
 }

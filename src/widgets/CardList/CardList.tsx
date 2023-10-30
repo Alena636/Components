@@ -78,11 +78,11 @@ export default class CardList extends Component<CardListResult, CardListProps> {
     }
 
     return (
-      <div className="cards__wrapper">
+      <section className="cards__wrapper">
         {items.map((item, index) => (
           <CardElement ind={item.id} people={item} key={index} />
         ))}
-      </div>
+      </section>
     );
   }
 }

@@ -1,0 +1,14 @@
+.main__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main__title {
+  line-height: 0.8em;
+	letter-spacing: -0.05em;
+	color: black;
+	text-shadow: -2px -2px 0 #ff6, 2px -2px 0 #ff6, -2px 2px 0 #ff6, 2px 2px 0 #ff6;
+  font-size: 4rem;
+	text-align: center;
+}

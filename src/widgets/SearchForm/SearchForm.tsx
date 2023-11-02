@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import ErrorButton from '../ErrorButton/ErrorButton';
 import './SearchForm.css';
 
@@ -7,64 +7,50 @@ type SearchFormProps = {
   onSubmit: (value: string) => void;
 };
 
-type SearchFormState = {
-  inputValue: string;
-};
-export default class SearchForm extends Component<
-  SearchFormProps,
-  SearchFormState
-> {
-  constructor(props: SearchFormProps) {
-    super(props);
-    this.state = {
-      inputValue: '',
-    };
-  }
+export default function SearchForm(props: SearchFormProps) {
+  const [inputValue, setInputValue] = useState<string>('');
 
-  handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.target.value;
-    this.setState({ inputValue });
-    localStorage.setItem('value', inputValue.trim());
+  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const newValue = e.target.value;
+    setInputValue(newValue);
+    localStorage.setItem('value', newValue.trim());
   };
 
-  handleClick = (e: React.FormEvent) => {
+  const handleClick = (e: React.FormEvent): void => {
     e.preventDefault();
-    this.props.onSubmit(this.state.inputValue);
+    props.onSubmit(inputValue);
   };
 
-  componentDidMount(): void {
-    window.addEventListener('beforeunload', this.saveToLocalStorage);
+  useEffect(() => {
+    const saveToLocalStorage = (): void => {
+      localStorage.setItem('value', inputValue);
+    };
+
+    window.addEventListener('beforeunload', saveToLocalStorage);
     const valueLocalStorage = localStorage.getItem('value');
     if (valueLocalStorage !== null) {
-      this.setState({ inputValue: valueLocalStorage });
+      setInputValue(valueLocalStorage);
     }
-  }
 
-  componentWillUnmount(): void {
-    window.removeEventListener('beforeunload', this.saveToLocalStorage);
-  }
+    return () => {
+      window.removeEventListener('beforeunload', saveToLocalStorage);
+    };
+  }, []);
 
-  saveToLocalStorage = () => {
-    localStorage.setItem('value', this.state.inputValue);
-  };
-
-  render() {
-    const { inputValue } = this.state;
-    return (
-      <section className="search__container">
-        <ErrorButton />
-        <form className="search__form" onSubmit={this.handleClick}>
-          <input
-            className="search__input"
-            type="text"
-            value={inputValue}
-            onChange={this.handleChangeInput}
-          />
-          <button className="search__btn" type="submit">
-            Search
-          </button>
-        </form>
-      </section>
-    );
-  }
+  return (
+    <section className="search__container">
+      <ErrorButton />
+      <form className="search__form" onSubmit={handleClick}>
+        <input
+          className="search__input"
+          type="text"
+          value={inputValue}
+          onChange={handleChangeInput}
+        />
+        <button className="search__btn" type="submit">
+          Search
+        </button>
+      </form>
+    </section>
+  );
 }

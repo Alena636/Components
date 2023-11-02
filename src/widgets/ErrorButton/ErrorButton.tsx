@@ -1,25 +1,24 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import './ErrorButton.css';
 
-export default class ErrorButton extends Component {
-  state = { hasError: false };
+export default function ErrorButton(): JSX.Element {
+  const [hasError, setHasError] = useState(false);
 
-  handleClick = () => {
+  const handleClick = (): void => {
     try {
       throw new Error("Error! It's an intentional error");
     } catch (error) {
-      this.setState({ hasError: true });
+      setHasError(true);
     }
   };
 
-  render() {
-    if (this.state.hasError) {
-      throw new Error("Error! It's an intentional error");
-    }
-    return (
-      <button onClick={this.handleClick} className="error__btn">
-        Error
-      </button>
-    );
+  if (hasError) {
+    throw new Error("Error! It's an intentional error");
   }
+
+  return (
+    <button onClick={handleClick} className="error__btn">
+      Error
+    </button>
+  );
 }

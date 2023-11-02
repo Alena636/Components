@@ -1,88 +1,63 @@
-import { Component } from 'react';
+import { useEffect, useState } from 'react';
 import { Card } from '../../types';
 import CardElement from '../Card/Card';
 import './CardList.css';
-
-type CardListProps = {
-  items: Card[];
-  error: null | Error;
-  isLoaded: boolean;
-};
 
 type CardListResult = {
   children?: JSX.Element;
   data?: string;
 };
 
-export default class CardList extends Component<CardListResult, CardListProps> {
-  constructor(props: CardListResult | Readonly<CardListResult>) {
-    super(props);
-    this.state = {
-      items: [],
-      error: null,
-      isLoaded: false,
-    };
-  }
+export default function CardList(props: CardListResult): JSX.Element {
+  const [items, setItems] = useState<Card[]>([]);
+  const [errors, setErrors] = useState<Error | null>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
-  getData = () => {
-    const valueKey = localStorage.getItem('value');
-    const url = valueKey
-      ? `https://swapi.dev/api/people/?search=${valueKey}`
-      : `https://swapi.dev/api/people/`;
+  useEffect(() => {
+    const getData = async (): Promise<void> => {
+      setIsLoaded(false);
+      setErrors(null);
 
-    this.setState({ isLoaded: false });
+      const valueKey = localStorage.getItem('value');
+      const url = valueKey
+        ? `https://swapi.dev/api/people/?search=${valueKey}`
+        : `https://swapi.dev/api/people/`;
 
-    fetch(url)
-      .then((resp) => {
-        if (!resp.ok) {
+      try {
+        const response = await fetch(url);
+
+        if (!response.ok) {
           throw new Error('HTTP Error!');
         }
-        return resp.json();
-      })
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            items: result.results,
-          });
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error,
-          });
-        }
-      );
-  };
 
-  componentDidMount(): void {
-    this.getData();
+        const result = await response.json();
+        setItems(result.results);
+        setIsLoaded(true);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        setErrors(errors);
+        setIsLoaded(true);
+      }
+    };
+
+    getData();
+  }, [props.data, errors]);
+
+  if (errors) {
+    return <p>Error</p>;
+  }
+  if (!isLoaded) {
+    return <p className="cards__loader">Loading...</p>;
+  }
+  if (items.length === 0) {
+    return <p className="cards__not-found">Nothing found</p>;
   }
 
-  componentDidUpdate(prevProps: Readonly<CardListResult>): void {
-    if (this.props.data !== prevProps.data) {
-      this.getData();
-    }
-  }
-
-  render() {
-    const { items, error, isLoaded } = this.state;
-    if (error) {
-      return <p>Error</p>;
-    }
-    if (!isLoaded) {
-      return <p className="cards__loader">Loading...</p>;
-    }
-    if (items.length === 0) {
-      return <p className="cards__not-found">Nothing found</p>;
-    }
-
-    return (
-      <section className="cards__wrapper">
-        {items.map((item, index) => (
-          <CardElement ind={item.id} people={item} key={index} />
-        ))}
-      </section>
-    );
-  }
+  return (
+    <section className="cards__wrapper">
+      {items.map((item, index) => (
+        <CardElement ind={item.id} people={item} key={index} />
+      ))}
+    </section>
+  );
 }

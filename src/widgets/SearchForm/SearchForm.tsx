@@ -35,7 +35,7 @@ export default function SearchForm(props: SearchFormProps) {
     return () => {
       window.removeEventListener('beforeunload', saveToLocalStorage);
     };
-  }, []);
+  }, [inputValue.trim()]);
 
   return (
     <section className="search__container">

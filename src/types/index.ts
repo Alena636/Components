@@ -23,3 +23,12 @@ export type CardDetailProps = {
   label: string;
   value: string;
 };
+
+export type SearchResultsProps = {
+  searchResults: Character[];
+  loading: boolean;
+  currentPage: number;
+  count: number | null;
+  itemsLimit: number;
+  changePage: (page: number) => void;
+};

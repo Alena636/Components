@@ -1,22 +1,15 @@
 import Cards from '../Card/Card';
-import { Character } from '../../types';
 import Pagination from '../Pagination/Pagination';
 import Loader from '../Loader/Loader';
+import { SearchResultsProps } from '../../types';
 import './CardList.css';
 
-type SearchResultsProps = {
-  searchResults: Character[];
-  loading: boolean;
-  currentPage: number;
-  count: number | null;
-  itemsLimit: number;
-  changePage: (page: number) => void;
-};
-
 const CardList = (props: SearchResultsProps): JSX.Element => {
-  return (
-    <section className="cards__wrapper">
-      {!props.loading ? (
+  const renderContent = () => {
+    if (props.loading) {
+      return <Loader />;
+    } else {
+      return (
         <>
           <Cards characters={props.searchResults} />
           <Pagination
@@ -26,11 +19,11 @@ const CardList = (props: SearchResultsProps): JSX.Element => {
             changePage={props.changePage}
           />
         </>
-      ) : (
-        <Loader />
-      )}
-    </section>
-  );
+      );
+    }
+  };
+
+  return <section className="cards__wrapper">{renderContent()}</section>;
 };
 
 export default CardList;

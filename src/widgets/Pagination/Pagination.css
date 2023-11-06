@@ -4,14 +4,16 @@
 }
 
 .pagination__btn {
+  font-weight: bold;
+  background-color: black;
+  color: yellow;
   width: 40px;
   height: 40px;
   border-radius: 50%;
   cursor: pointer;
 }
 
-.pagination-btn_disabled,
-.pagination-btn_disabled:hover,
-.pagination-btn_disabled:active {
+.pagination__btn:disabled {
   cursor: default;
+  background-color: aliceblue;
 }

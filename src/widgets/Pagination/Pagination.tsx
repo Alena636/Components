@@ -1,12 +1,17 @@
 import { useEffect, useState } from 'react';
+import { PaginationProps } from '../../types';
+import { PaginationButton } from './PaginationButton';
 import './Pagination.css';
 
-type PaginationProps = {
-  count: number | null;
-  itemsLimit: number;
-  currentPage: number;
-  changePage: (page: number) => void;
+type DotsButtonProps = {
+  ind: string;
 };
+
+const DotsButton = (props: DotsButtonProps): JSX.Element => (
+  <button className="pagination__btn" key={props.ind}>
+    ...
+  </button>
+);
 
 const Pagination = (props: PaginationProps): JSX.Element => {
   const [allPages, setAllPages] = useState<number[] | null>(null);
@@ -21,72 +26,57 @@ const Pagination = (props: PaginationProps): JSX.Element => {
 
     if (maxPages) {
       setTotalPages(maxPages);
-      setAllPages(
-        (new Array(maxPages) as number[]).fill(0).map((_, index) => index + 1)
-      );
+      setAllPages(Array.from({ length: maxPages }, (_, index) => index + 1));
     }
   }, [props.count, props.itemsLimit]);
 
+  const renderPageButtons = () => {
+    if (!allPages) return null;
+
+    return allPages.map((page, index) => {
+      if (props.currentPage === page) {
+        return (
+          <PaginationButton
+            key={`page-${page}`}
+            label={page}
+            isActive={true}
+            onClick={() => {}}
+          />
+        );
+      } else if (
+        page === 1 ||
+        page === totalPages ||
+        (props.currentPage < page + 2 && props.currentPage > page - 2)
+      ) {
+        return (
+          <PaginationButton
+            key={`page-${page}`}
+            label={page}
+            isActive={false}
+            onClick={() => props.changePage(page)}
+          />
+        );
+      } else if (page - 1 === 1 || page + 1 === totalPages) {
+        return <DotsButton ind={`page-${page}`} key={index} />;
+      } else {
+        return null;
+      }
+    });
+  };
+
   return (
     <div className="pagination__container">
-      {props.currentPage > 1 ? (
-        <button
-          className="pagination__btn"
-          onClick={() => {
-            props.changePage(props.currentPage - 1);
-          }}
-        >
-          &#60;
-        </button>
-      ) : (
-        <button className="pagination__btn pagination-btn_disabled">
-          &#60;
-        </button>
-      )}
-      {allPages &&
-        allPages.map((page) => {
-          return props.currentPage === page ? (
-            <button
-              className="pagination__btn pagination-btn-active"
-              disabled={true}
-              key={`page-${page}`}
-            >
-              {page}
-            </button>
-          ) : page === 1 ||
-            page === totalPages ||
-            (props.currentPage < page + 2 && props.currentPage > page - 2) ||
-            (page === props.currentPage + 2 && page - 2 === 1) ||
-            (page === props.currentPage - 2 && page + 2 === totalPages) ? (
-            <button
-              className="pagination__btn"
-              key={`page-${page}`}
-              onClick={() => {
-                props.changePage(page);
-              }}
-            >
-              {page}
-            </button>
-          ) : page - 1 === 1 || page + 1 === totalPages ? (
-            <button className="pagination__btn" key={`page-${page}`}>
-              ...
-            </button>
-          ) : null;
-        })}
-      {totalPages && props.currentPage < totalPages ? (
-        <button
-          className="pagination__btn"
-          onClick={() => {
-            props.changePage(props.currentPage + 1);
-          }}
-        >
-          &#62;
-        </button>
-      ) : (
-        <button className="pagination__btn pagination-btn_disabled">
-          &#62;
-        </button>
-      )}
+      <PaginationButton
+        label="&#60;"
+        isActive={props.currentPage === 1}
+        onClick={() => props.changePage(props.currentPage - 1)}
+      />
+      {renderPageButtons()}
+      <PaginationButton
+        label="&#62;"
+        isActive={props.currentPage === totalPages}
+        onClick={() => props.changePage(props.currentPage + 1)}
+      />
     </div>
   );
 };

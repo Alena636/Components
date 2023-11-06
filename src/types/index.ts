@@ -32,3 +32,10 @@ export type SearchResultsProps = {
   itemsLimit: number;
   changePage: (page: number) => void;
 };
+
+export type PaginationProps = {
+  count: number | null;
+  itemsLimit: number;
+  currentPage: number;
+  changePage: (page: number) => void;
+};

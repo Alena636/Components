@@ -1,5 +1,5 @@
 import { Params } from 'react-router';
-import { Character } from '../widgets/Card/Card';
+import { Character } from '../types';
 import { SearchPeopleResponse } from '../pages/Main/Main';
 
 export async function getCharacter(

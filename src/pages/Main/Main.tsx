@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import CardList from '../../widgets/CardList/CardList';
 import { searchCharacters } from '../../api/Api';
-import { Character } from '../../widgets/Card/Card';
+import { Character } from '../../types/index';
 import SearchForm from '../../widgets/SearchForm/SearchForm';
 import {
   Outlet,
@@ -12,6 +12,7 @@ import {
 import { ItemsLimit } from '../../types/index';
 import { Route } from '../../utils/routePath';
 import Loader from '../../widgets/Loader/Loader';
+import './Main.css';
 
 export type SearchPeopleResponse = {
   results: Character[];
@@ -93,6 +94,18 @@ function MainPage(): JSX.Element {
     }
   };
 
+  const handleSearch = async () => {
+    const userSearchTerm = userInputString.trim();
+
+    if (searchString === userSearchTerm) return;
+
+    setSearchString(userSearchTerm);
+    console.log(searchString);
+    localStorage.setItem('value', userSearchTerm);
+
+    getSearchResults(userSearchTerm);
+  };
+
   const loadInitialData = async () => {
     const storedSearchString = localStorage.getItem('value') || '';
 
@@ -108,17 +121,6 @@ function MainPage(): JSX.Element {
     loadInitialData();
   }, []);
 
-  const handleSearch = async () => {
-    const userSearchTerm = userInputString.trim();
-
-    if (searchString === userSearchTerm) return;
-
-    setSearchString(userSearchTerm);
-    localStorage.setItem('value', userSearchTerm);
-
-    getSearchResults(userSearchTerm);
-  };
-
   const handleItemsPerPageChange = (
     event: React.ChangeEvent<HTMLSelectElement>
   ) => {
@@ -132,7 +134,8 @@ function MainPage(): JSX.Element {
   };
 
   return (
-    <>
+    <div className="main__container">
+      <h1 className="main__title">Star Wars: People</h1>
       <SearchForm
         userInputString={userInputString}
         setUserInputString={setUserInputString}
@@ -157,7 +160,7 @@ function MainPage(): JSX.Element {
           <Outlet />
         </>
       )}
-    </>
+    </div>
   );
 }
 

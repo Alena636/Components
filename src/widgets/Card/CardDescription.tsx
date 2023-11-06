@@ -1,5 +1,5 @@
 import { useLoaderData } from 'react-router';
-import { Character } from '../Card/Card';
+import { Character } from '../../types';
 import './CardDescription.css';
 
 const CardDescription = (): JSX.Element => {

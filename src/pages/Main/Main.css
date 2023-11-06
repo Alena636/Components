@@ -5,6 +5,7 @@
 }
 
 .main__title {
+  margin-bottom: -1rem;
   line-height: 0.8em;
   letter-spacing: -0.05em;
   color: black;

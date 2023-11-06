@@ -1,4 +1,5 @@
-import Cards, { Character } from '../Card/Card';
+import Cards from '../Card/Card';
+import { Character } from '../../types';
 import Pagination from '../Pagination/Pagination';
 import Loader from '../Loader/Loader';
 import './CardList.css';

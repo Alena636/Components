@@ -1,29 +1,18 @@
 import { NavLink, useSearchParams } from 'react-router-dom';
+import { Character } from '../../types';
 import './Card.css';
 
 type CharactersProps = {
   characters: Character[];
 };
 
-export type Character = {
-  name: string;
-  height: number;
-  mass: number | string;
-  hair_color: string;
-  skin_color: string;
-  eye_color: string;
-  birth_year: string;
-  gender: string;
-  url: string;
+const getCharacterId = (url: string) => {
+  const arr = url.split('/');
+  return arr[arr.length - 2];
 };
 
 const Cards = (props: CharactersProps): JSX.Element => {
   const [searchParams] = useSearchParams();
-
-  const getCharacterId = (url: string) => {
-    const arr = url.split('/');
-    return arr[arr.length - 2];
-  };
 
   return (
     <ul className="cards__container">

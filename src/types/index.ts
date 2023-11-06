@@ -14,3 +14,7 @@ export type Character = {
   gender: string;
   url: string;
 };
+
+export type CharactersProps = {
+  characters: Character[];
+};

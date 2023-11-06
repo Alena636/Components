@@ -1,18 +1,14 @@
 import { NavLink, useSearchParams } from 'react-router-dom';
-import { Character } from '../../types';
+import { Character, CharactersProps } from '../../types';
+import { getCharacterId } from '../../utils/getCharacterId';
 import './Card.css';
-
-type CharactersProps = {
-  characters: Character[];
-};
-
-const getCharacterId = (url: string) => {
-  const arr = url.split('/');
-  return arr[arr.length - 2];
-};
 
 const Cards = (props: CharactersProps): JSX.Element => {
   const [searchParams] = useSearchParams();
+
+  const handleClick = () => {
+    localStorage.setItem('searchUrl', searchParams.toString());
+  };
 
   return (
     <ul className="cards__container">
@@ -22,9 +18,7 @@ const Cards = (props: CharactersProps): JSX.Element => {
             className="link"
             to={`${getCharacterId(character.url)}`}
             key={getCharacterId(character.url)}
-            onClick={() => {
-              localStorage.setItem('searchUrl', searchParams.toString());
-            }}
+            onClick={handleClick}
           >
             <div className="cards">
               <div key={character.name} className="card">

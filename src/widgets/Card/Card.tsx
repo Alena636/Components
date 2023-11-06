@@ -23,7 +23,7 @@ const Cards = (props: CharactersProps): JSX.Element => {
             to={`${getCharacterId(character.url)}`}
             key={getCharacterId(character.url)}
             onClick={() => {
-              localStorage.setItem('value', searchParams.toString());
+              localStorage.setItem('searchUrl', searchParams.toString());
             }}
           >
             <div className="cards">

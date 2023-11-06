@@ -18,3 +18,8 @@ export type Character = {
 export type CharactersProps = {
   characters: Character[];
 };
+
+export type CardDetailProps = {
+  label: string;
+  value: string;
+};

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router';
-import CardDescription from '../Card/CardDescription';
+import CardDescription from '../CardDescription/CardDescription';
 import { useState } from 'react';
 import { Route } from '../../utils/routePath';
 import { useSearchParams } from 'react-router-dom';

@@ -1,31 +1,31 @@
-.card {
+.cards__container {
+  max-width: 1440px;
+  margin: 0 auto;
   display: flex;
-  background-color: aliceblue;
-  flex-direction: column;
-  border: 1px solid black;
-  border-radius: 10%;
-  width: 240px;
-  text-align: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-bottom: 2rem;
+  justify-content: center;
   align-items: center;
-  transition: 0.7s;
 }
 
-.card__name {
-  font-size: 1.4rem;
-  width: 84%;
-  border-bottom: 3px solid lightgray;
+.cards {
+  width: 200px;
+  height: 200px;
+  background-color: aliceblue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.card__height,
-.card__mass,
-.card__gender {
-  font-size: 1rem;
-}
-
-.bold {
+.link {
+  text-decoration: none;
+  color: black;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 
-.card:hover {
-  transform: scale(1.1);
+.character__name {
+  text-decoration: none;
 }

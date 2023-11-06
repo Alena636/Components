@@ -6,6 +6,7 @@
   gap: 2rem;
   max-width: 1440px;
   margin: 0 auto;
+  flex-wrap: wrap;
 }
 
 .search__form {
@@ -51,4 +52,32 @@
 
 .search__btn:hover {
   background-color: #565656;
+}
+
+.error__btn {
+  background-color: rgb(0, 0, 0);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 14px 24px 13px;
+  font-size: 1rem;
+  line-height: 1.25rem;
+  border-radius: 6px;
+  transition: 0.7s;
+}
+
+.error__btn:hover {
+  background-color: red;
+}
+
+.search__items-per-page {
+  display: flex;
+  gap: 10px;
+  color: black;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.search__select {
+  cursor: pointer;
 }

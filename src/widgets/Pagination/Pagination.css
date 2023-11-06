@@ -1,13 +1,17 @@
-.select-container {
+.pagination__container {
   display: flex;
-  width: 100%;
-  align-items: center;
+  gap: 3px;
 }
-select {
-  height: 2em;
+
+.pagination__btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
 }
-h3 {
-  margin-right: 1rem;
-  margin-top: 0.2rem;
-  margin-bottom: 0.2rem;
+
+.pagination-btn_disabled,
+.pagination-btn_disabled:hover,
+.pagination-btn_disabled:active {
+  cursor: default;
 }

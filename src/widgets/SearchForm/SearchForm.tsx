@@ -1,56 +1,59 @@
-import React, { useEffect, useState } from 'react';
-import ErrorButton from '../ErrorButton/ErrorButton';
+import { useState } from 'react';
+import { ItemsLimit } from '../../types/index';
 import './SearchForm.css';
 
-type SearchFormProps = {
-  children?: JSX.Element;
-  onSubmit: (value: string) => void;
+type SearchSectionProps = {
+  userInputString: string;
+  handleSearch: () => void;
+  setUserInputString: React.Dispatch<React.SetStateAction<string>>;
+  setItemsLimit: React.Dispatch<React.SetStateAction<number>>;
+  handleItemsPerPageChange: (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => void;
 };
 
-export default function SearchForm(props: SearchFormProps) {
-  const [inputValue, setInputValue] = useState<string>('');
+const SearchForm = (props: SearchSectionProps): JSX.Element => {
+  const [error, setError] = useState<Error | null>(null);
 
-  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>): void => {
-    const newValue = e.target.value;
-    setInputValue(newValue);
-    localStorage.setItem('value', newValue.trim());
+  const throwError = () => {
+    setError(new Error());
   };
 
-  const handleClick = (e: React.FormEvent): void => {
-    e.preventDefault();
-    props.onSubmit(inputValue);
-  };
-
-  useEffect(() => {
-    const saveToLocalStorage = (): void => {
-      localStorage.setItem('value', inputValue);
-    };
-
-    window.addEventListener('beforeunload', saveToLocalStorage);
-    const valueLocalStorage = localStorage.getItem('value');
-    if (valueLocalStorage !== null) {
-      setInputValue(valueLocalStorage);
-    }
-
-    return () => {
-      window.removeEventListener('beforeunload', saveToLocalStorage);
-    };
-  }, [inputValue.trim()]);
+  if (error) {
+    throw new Error('Custom Error');
+  }
 
   return (
     <section className="search__container">
-      <ErrorButton />
-      <form className="search__form" onSubmit={handleClick}>
+      <button className="error__btn" onClick={throwError}>
+        Error
+      </button>
+      <form className="search__form">
         <input
           className="search__input"
           type="text"
-          value={inputValue}
-          onChange={handleChangeInput}
-        />
-        <button className="search__btn" type="submit">
+          value={props.userInputString}
+          onChange={(e) => props.setUserInputString(e.target.value)}
+        ></input>
+        <button className="search__btn" onClick={props.handleSearch}>
           Search
         </button>
       </form>
+      <div className="search__items-per-page">
+        Items per page:
+        <select
+          className="search__select"
+          onChange={(event) => {
+            props.setItemsLimit(+event.target.value);
+            props.handleItemsPerPageChange(event);
+          }}
+        >
+          <option>{ItemsLimit.TenItemsPerPage}</option>
+          <option>{ItemsLimit.FiveItemsPerPage}</option>
+        </select>
+      </div>
     </section>
   );
-}
+};
+
+export default SearchForm;

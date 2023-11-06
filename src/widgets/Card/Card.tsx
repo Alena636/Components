@@ -1,25 +1,54 @@
-import { CardProps } from '../../types';
+import { NavLink, useSearchParams } from 'react-router-dom';
 import './Card.css';
 
-export default function CardElement(props: CardProps): JSX.Element {
-  const { name, height, weight, sprites } = props;
+type CharactersProps = {
+  characters: Character[];
+};
+
+export type Character = {
+  name: string;
+  height: number;
+  mass: number | string;
+  hair_color: string;
+  skin_color: string;
+  eye_color: string;
+  birth_year: string;
+  gender: string;
+  url: string;
+};
+
+const Cards = (props: CharactersProps): JSX.Element => {
+  const [searchParams] = useSearchParams();
+
+  const getCharacterId = (url: string) => {
+    const arr = url.split('/');
+    return arr[arr.length - 2];
+  };
+
   return (
-    <div className="card">
-      <h4 className="card__name">{name}</h4>
-      <div className="card__description">
-        <p className="card__height">
-          <span className="bold">Height: </span>
-          {height}
-        </p>
-        <p className="card__mass">
-          <span className="bold">Mass: </span>
-          {weight}
-        </p>
-        <p className="card__gender">
-          <span className="bold">Gender: </span>
-          {sprites.front_default}
-        </p>
-      </div>
-    </div>
+    <ul className="cards__container">
+      {props.characters?.length > 0 ? (
+        props.characters.map((character: Character) => (
+          <NavLink
+            className="link"
+            to={`${getCharacterId(character.url)}`}
+            key={getCharacterId(character.url)}
+            onClick={() => {
+              localStorage.setItem('value', searchParams.toString());
+            }}
+          >
+            <div className="cards">
+              <div key={character.name} className="card">
+                <h3 className="character__name">{character.name}</h3>
+              </div>
+            </div>
+          </NavLink>
+        ))
+      ) : (
+        <h3>No results</h3>
+      )}
+    </ul>
   );
-}
+};
+
+export default Cards;

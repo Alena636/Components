@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import { Route as RoutePath } from '../../utils/routePath';
 import { getCharacter } from '../../api/Api';
+import Details from '../Details/Details';
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -17,7 +18,7 @@ export const router = createBrowserRouter(
     >
       <Route
         path=":id"
-        // element={<Details />}
+        element={<Details />}
         loader={async ({ params }) => {
           return getCharacter(params);
         }}

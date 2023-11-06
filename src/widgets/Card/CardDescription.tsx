@@ -2,7 +2,7 @@ import { useLoaderData } from 'react-router';
 import { Character } from '../Card/Card';
 import './CardDescription.css';
 
-const CharacterDescription = (): JSX.Element => {
+const CardDescription = (): JSX.Element => {
   const character = useLoaderData() as Character;
 
   return (
@@ -26,4 +26,4 @@ const CharacterDescription = (): JSX.Element => {
   );
 };
 
-export default CharacterDescription;
+export default CardDescription;

@@ -29,7 +29,7 @@ export async function searchCharacters(
 
     const resp = await fetch(`https://swapi.dev/api/people${query}`);
     if (!resp.ok) {
-      throw new Error(`HTTP error! Status: ${resp.status}`);
+      throw new Error(`HTTP error`);
     }
     const data = await resp.json();
     return data;

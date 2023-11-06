@@ -1,0 +1,15 @@
+.card__name {
+  width: 13rem;
+  font-size: 2rem;
+  border-bottom: 2px solid black;
+  text-align: center;
+}
+
+.card__description {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  font-size: 1.3rem;
+  padding: 2rem;
+  border: 1px solid black;
+}

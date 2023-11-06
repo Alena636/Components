@@ -1,10 +1,10 @@
-import MainPage from '../../pages/Main/Main';
-import ErrorBoundary from '../../widgets/ErrorBoundary/ErrorBoundary';
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
 } from 'react-router-dom';
+import MainPage from '../../pages/Main/Main';
+import ErrorBoundary from '../../widgets/ErrorBoundary/ErrorBoundary';
 import { Route as RoutePath } from '../../utils/routePath';
 import { getCharacter } from '../../api/Api';
 import Details from '../Details/Details';

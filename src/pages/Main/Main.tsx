@@ -9,15 +9,10 @@ import {
   useNavigation,
   useSearchParams,
 } from 'react-router-dom';
-import { ItemsLimit } from '../../types/index';
+import { ItemsLimit, SearchPeopleResponse } from '../../types/index';
 import { Route } from '../../utils/routePath';
 import Loader from '../../widgets/Loader/Loader';
 import './Main.css';
-
-export type SearchPeopleResponse = {
-  results: Character[];
-  count: number;
-};
 
 const FIRST_PAGE = 1;
 

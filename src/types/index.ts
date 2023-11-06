@@ -49,3 +49,8 @@ export type SearchFormProps = {
     event: React.ChangeEvent<HTMLSelectElement>
   ) => void;
 };
+
+export type SearchPeopleResponse = {
+  results: Character[];
+  count: number;
+};

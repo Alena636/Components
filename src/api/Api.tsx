@@ -1,6 +1,6 @@
 import { Params } from 'react-router';
 import { Character } from '../types';
-import { SearchPeopleResponse } from '../pages/Main/Main';
+import { SearchPeopleResponse } from '../types';
 
 export async function getCharacter(
   props: Params<string>

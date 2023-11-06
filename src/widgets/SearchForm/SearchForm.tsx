@@ -1,18 +1,8 @@
 import { useState } from 'react';
-import { ItemsLimit } from '../../types/index';
+import { ItemsLimit, SearchFormProps } from '../../types/index';
 import './SearchForm.css';
 
-type SearchSectionProps = {
-  userInputString: string;
-  handleSearch: () => void;
-  setUserInputString: React.Dispatch<React.SetStateAction<string>>;
-  setItemsLimit: React.Dispatch<React.SetStateAction<number>>;
-  handleItemsPerPageChange: (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => void;
-};
-
-const SearchForm = (props: SearchSectionProps): JSX.Element => {
+const SearchForm = (props: SearchFormProps): JSX.Element => {
   const [error, setError] = useState<Error | null>(null);
 
   const throwError = () => {

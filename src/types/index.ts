@@ -39,3 +39,13 @@ export type PaginationProps = {
   currentPage: number;
   changePage: (page: number) => void;
 };
+
+export type SearchFormProps = {
+  userInputString: string;
+  handleSearch: () => void;
+  setUserInputString: React.Dispatch<React.SetStateAction<string>>;
+  setItemsLimit: React.Dispatch<React.SetStateAction<number>>;
+  handleItemsPerPageChange: (
+    event: React.ChangeEvent<HTMLSelectElement>
+  ) => void;
+};

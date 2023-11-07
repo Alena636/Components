@@ -121,7 +121,7 @@ function MainPage(): JSX.Element {
   ) => {
     navigate(Route.Home);
     setItemsLimit(+event.target.value);
-    getSearchResults(searchString, currentPage, +event.target.value);
+    getSearchResults(searchString, FIRST_PAGE, +event.target.value);
   };
 
   const changePage = (page: number): void => {

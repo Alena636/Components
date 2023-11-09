@@ -13,7 +13,7 @@ import { ItemsLimit, SearchPeopleResponse } from '../../types/index';
 import { Route } from '../../utils/routePath';
 import Loader from '../../widgets/Loader/Loader';
 import './Main.css';
-import { ValueContext } from '../../Context/Context';
+import { ValueContext } from '../../widgets/Context/Context';
 
 const FIRST_PAGE = 1;
 

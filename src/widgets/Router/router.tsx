@@ -8,6 +8,7 @@ import ErrorBoundary from '../../widgets/ErrorBoundary/ErrorBoundary';
 import { Route as RoutePath } from '../../utils/routePath';
 import { getCharacter } from '../../api/Api';
 import Details from '../Details/Details';
+import NotFound from '../../pages/NotFound/NotFound';
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -22,7 +23,6 @@ export const router = createBrowserRouter(
         loader={async ({ params }) => {
           return getCharacter(params);
         }}
-        errorElement={<ErrorBoundary />}
       ></Route>
     </Route>
   )

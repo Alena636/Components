@@ -13,13 +13,16 @@ import { ItemsLimit, SearchPeopleResponse } from '../../types/index';
 import { Route } from '../../utils/routePath';
 import Loader from '../../widgets/Loader/Loader';
 import './Main.css';
+import { ValueContext } from '../../Context/Context';
 
 const FIRST_PAGE = 1;
 
 function MainPage(): JSX.Element {
   const [searchResults, setSearchResults] = useState<Character[]>([]);
   const [searchString, setSearchString] = useState<string>('');
-  const [userInputString, setUserInputString] = useState<string>('');
+  const [userInputString, setUserInputString] = useState(
+    localStorage.getItem('value') || ''
+  );
   const [loading, setLoading] = useState<boolean>(true);
   const [currentPage, setCurrentPage] = useState<number>(FIRST_PAGE);
   const [count, setCount] = useState<number | null>(null);
@@ -95,7 +98,6 @@ function MainPage(): JSX.Element {
     if (searchString === userSearchTerm) return;
 
     setSearchString(userSearchTerm);
-    console.log(searchString);
     localStorage.setItem('value', userSearchTerm);
 
     getSearchResults(userSearchTerm);
@@ -131,13 +133,15 @@ function MainPage(): JSX.Element {
   return (
     <div className="main__container">
       <h1 className="main__title">Star Wars: People</h1>
-      <SearchForm
-        userInputString={userInputString}
-        setUserInputString={setUserInputString}
-        handleSearch={handleSearch}
-        setItemsLimit={setItemsLimit}
-        handleItemsPerPageChange={handleItemsPerPageChange}
-      />
+      <ValueContext.Provider value={[userInputString, setUserInputString]}>
+        <SearchForm
+          userInputString={userInputString}
+          setUserInputString={setUserInputString}
+          handleSearch={handleSearch}
+          setItemsLimit={setItemsLimit}
+          handleItemsPerPageChange={handleItemsPerPageChange}
+        />
+      </ValueContext.Provider>
       {navigation.state === 'loading' ? (
         <div className="loader__container">
           <Loader />

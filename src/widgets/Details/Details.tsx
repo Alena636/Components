@@ -5,7 +5,7 @@ import CardDescription from '../CardDescription/CardDescription';
 import { Route } from '../../utils/routePath';
 import './Details.css';
 
-const Details = (): JSX.Element => {
+const Details: React.FC = () => {
   const [isVisible, setIsVisible] = useState<boolean>(true);
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();

@@ -4,14 +4,16 @@ type PaginationButtonProps = {
   onClick: () => void;
 };
 
-export const PaginationButton = (props: PaginationButtonProps): JSX.Element => (
+export const PaginationButton: React.FC<PaginationButtonProps> = ({
+  isActive,
+  onClick,
+  label,
+}) => (
   <button
-    className={`pagination__btn ${
-      props.isActive ? 'pagination-btn-active' : ''
-    }`}
-    onClick={props.onClick}
-    disabled={props.isActive}
+    className={`pagination__btn ${isActive ? 'pagination-btn-active' : ''}`}
+    onClick={onClick}
+    disabled={isActive}
   >
-    {props.label}
+    {label}
   </button>
 );

@@ -7,34 +7,39 @@ type DotsButtonProps = {
   ind: string;
 };
 
-const DotsButton = (props: DotsButtonProps): JSX.Element => (
-  <button className="pagination__btn" key={props.ind}>
+const DotsButton: React.FC<DotsButtonProps> = ({ ind }) => (
+  <button className="pagination__btn" key={ind}>
     ...
   </button>
 );
 
-const Pagination = (props: PaginationProps): JSX.Element => {
+const Pagination: React.FC<PaginationProps> = ({
+  count,
+  itemsLimit,
+  currentPage,
+  changePage,
+}) => {
   const [allPages, setAllPages] = useState<number[] | null>(null);
   const [totalPages, setTotalPages] = useState<number | null>(null);
 
   useEffect(() => {
     let maxPages: number | undefined;
 
-    if (props.count) {
-      maxPages = Math.ceil(props.count / props.itemsLimit);
+    if (count) {
+      maxPages = Math.ceil(count / itemsLimit);
     }
 
     if (maxPages) {
       setTotalPages(maxPages);
       setAllPages(Array.from({ length: maxPages }, (_, index) => index + 1));
     }
-  }, [props.count, props.itemsLimit]);
+  }, [count, itemsLimit]);
 
   const renderPageButtons = () => {
     if (!allPages) return null;
 
     return allPages.map((page, index) => {
-      if (props.currentPage === page) {
+      if (currentPage === page) {
         return (
           <PaginationButton
             key={`page-${page}`}
@@ -46,14 +51,14 @@ const Pagination = (props: PaginationProps): JSX.Element => {
       } else if (
         page === 1 ||
         page === totalPages ||
-        (props.currentPage < page + 2 && props.currentPage > page - 2)
+        (currentPage < page + 2 && currentPage > page - 2)
       ) {
         return (
           <PaginationButton
             key={`page-${page}`}
             label={page}
             isActive={false}
-            onClick={() => props.changePage(page)}
+            onClick={() => changePage(page)}
           />
         );
       } else if (page - 1 === 1 || page + 1 === totalPages) {
@@ -68,14 +73,14 @@ const Pagination = (props: PaginationProps): JSX.Element => {
     <div className="pagination__container">
       <PaginationButton
         label="&#60;"
-        isActive={props.currentPage === 1}
-        onClick={() => props.changePage(props.currentPage - 1)}
+        isActive={currentPage === 1}
+        onClick={() => changePage(currentPage - 1)}
       />
       {renderPageButtons()}
       <PaginationButton
         label="&#62;"
-        isActive={props.currentPage === totalPages}
-        onClick={() => props.changePage(props.currentPage + 1)}
+        isActive={currentPage === totalPages}
+        onClick={() => changePage(currentPage + 1)}
       />
     </div>
   );

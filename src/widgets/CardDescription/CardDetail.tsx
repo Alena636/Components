@@ -1,7 +1,7 @@
 import { CardDetailProps } from '../../types';
 
-export const CardDetail = (props: CardDetailProps): JSX.Element => (
+export const CardDetail: React.FC<CardDetailProps> = ({ label, value }) => (
   <div>
-    <strong>{props.label}:</strong> {props.value}
+    <strong>{label}:</strong> {value}
   </div>
 );

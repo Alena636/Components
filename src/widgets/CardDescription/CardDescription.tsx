@@ -3,7 +3,7 @@ import { Character } from '../../types';
 import { CardDetail } from './CardDetail';
 import './CardDescription.css';
 
-const CardDescription = (): JSX.Element => {
+const CardDescription: React.FC = () => {
   const character = useLoaderData() as Character;
 
   const displayMass =

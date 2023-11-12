@@ -3,7 +3,7 @@ import { Character, CharactersProps } from '../../types';
 import { getCharacterId } from '../../utils/getCharacterId';
 import './Card.css';
 
-const Cards = (props: CharactersProps): JSX.Element => {
+const Cards: React.FC<CharactersProps> = ({ characters }) => {
   const [searchParams] = useSearchParams();
 
   const handleClick = () => {
@@ -12,8 +12,8 @@ const Cards = (props: CharactersProps): JSX.Element => {
 
   return (
     <ul className="cards__container">
-      {props.characters?.length > 0 ? (
-        props.characters.map((character: Character) => (
+      {characters?.length > 0 ? (
+        characters.map((character: Character) => (
           <NavLink
             className="link"
             to={`${getCharacterId(character.url)}`}

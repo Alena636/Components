@@ -2,7 +2,13 @@ import { useState } from 'react';
 import { ItemsLimit, SearchFormProps } from '../../types/index';
 import './SearchForm.css';
 
-const SearchForm = (props: SearchFormProps): JSX.Element => {
+const SearchForm: React.FC<SearchFormProps> = ({
+  userInputString,
+  setUserInputString,
+  handleSearch,
+  setItemsLimit,
+  handleItemsPerPageChange,
+}) => {
   const [error, setError] = useState<Error | null>(null);
 
   const throwError = () => {
@@ -22,10 +28,10 @@ const SearchForm = (props: SearchFormProps): JSX.Element => {
         <input
           className="search__input"
           type="text"
-          value={props.userInputString}
-          onChange={(e) => props.setUserInputString(e.target.value)}
+          value={userInputString}
+          onChange={(e) => setUserInputString(e.target.value)}
         ></input>
-        <button className="search__btn" onClick={props.handleSearch}>
+        <button className="search__btn" onClick={handleSearch}>
           Search
         </button>
       </form>
@@ -34,8 +40,8 @@ const SearchForm = (props: SearchFormProps): JSX.Element => {
         <select
           className="search__select"
           onChange={(event) => {
-            props.setItemsLimit(+event.target.value);
-            props.handleItemsPerPageChange(event);
+            setItemsLimit(+event.target.value);
+            handleItemsPerPageChange(event);
           }}
         >
           <option>{ItemsLimit.TenItemsPerPage}</option>

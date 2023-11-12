@@ -4,19 +4,26 @@ import Loader from '../Loader/Loader';
 import { SearchResultsProps } from '../../types';
 import './CardList.css';
 
-const CardList = (props: SearchResultsProps): JSX.Element => {
+const CardList: React.FC<SearchResultsProps> = ({
+  loading,
+  searchResults,
+  count,
+  itemsLimit,
+  currentPage,
+  changePage,
+}) => {
   const renderContent = () => {
-    if (props.loading) {
+    if (loading) {
       return <Loader />;
     } else {
       return (
         <>
-          <Cards characters={props.searchResults} />
+          <Cards characters={searchResults} />
           <Pagination
-            count={props.count}
-            itemsLimit={props.itemsLimit}
-            currentPage={props.currentPage}
-            changePage={props.changePage}
+            count={count}
+            itemsLimit={itemsLimit}
+            currentPage={currentPage}
+            changePage={changePage}
           />
         </>
       );

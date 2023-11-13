@@ -1,0 +1,19 @@
+.pagination__container {
+  display: flex;
+  gap: 3px;
+}
+
+.pagination__btn {
+  font-weight: bold;
+  background-color: black;
+  color: yellow;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.pagination__btn:disabled {
+  cursor: default;
+  background-color: aliceblue;
+}

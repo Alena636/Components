@@ -1,0 +1,12 @@
+.loader__container {
+  padding-top: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  font-size: 3rem;
+  font-weight: bold;
+  color: aliceblue;
+}

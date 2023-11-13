@@ -88,13 +88,27 @@
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
 <a name='L29'></a><a href='#L29'>29</a>
-<a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a>
+<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -123,19 +137,26 @@
 import { SearchResultsProps } from '../../types';
 <span class="cstat-no" title="statement not covered" >import './CardList.css';</span>
 &nbsp;
-const CardList = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(p</span>rops: SearchResultsProps): JSX.Element =&gt; {</span>
+const CardList: React.FC&lt;SearchResultsProps&gt; = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >({</span></span>
+  loading,
+  searchResults,
+  count,
+  itemsLimit,
+  currentPage,
+  changePage,
+}) =&gt; {
   const renderContent = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =</span>&gt; {</span>
-<span class="cstat-no" title="statement not covered" >    if (props.loading) {</span>
+<span class="cstat-no" title="statement not covered" >    if (loading) {</span>
 <span class="cstat-no" title="statement not covered" >      return &lt;Loader /&gt;;</span>
     } else {
 <span class="cstat-no" title="statement not covered" >      return (</span>
         &lt;&gt;
-          &lt;Cards characters={props.searchResults} /&gt;
+          &lt;Cards characters={searchResults} /&gt;
           &lt;Pagination
-            count={props.count}
-            itemsLimit={props.itemsLimit}
-            currentPage={props.currentPage}
-            changePage={props.changePage}
+            count={count}
+            itemsLimit={itemsLimit}
+            currentPage={currentPage}
+            changePage={changePage}
           /&gt;
         &lt;/&gt;
       );
@@ -160,7 +181,7 @@ const CardList = <span class="cstat-no" title="statement not covered" ><span cla
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2023-11-09T18:09:48.000Z
+      at 2023-11-12T20:55:31.416Z
     </div>
     <script src="../../../prettify.js"></script>
     <script>

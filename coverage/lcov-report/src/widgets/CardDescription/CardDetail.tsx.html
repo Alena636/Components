@@ -25,9 +25,9 @@
         </h1>
         <div class="clearfix">
           <div class="fl pad1y space-right2">
-            <span class="strong">100% </span>
+            <span class="strong">66.66% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">3/3</span>
+            <span class="fraction">2/3</span>
           </div>
 
           <div class="fl pad1y space-right2">
@@ -37,15 +37,15 @@
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">100% </span>
+            <span class="strong">0% </span>
             <span class="quiet">Functions</span>
-            <span class="fraction">1/1</span>
+            <span class="fraction">0/1</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">100% </span>
+            <span class="strong">50% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">2/2</span>
+            <span class="fraction">1/2</span>
           </div>
         </div>
         <p class="quiet">
@@ -59,7 +59,7 @@
           </div>
         </template>
       </div>
-      <div class="status-line high"></div>
+      <div class="status-line medium"></div>
       <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -71,15 +71,15 @@
 <a name='L8'></a><a href='#L8'>8</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { CardDetailProps } from '../../types';
 &nbsp;
-export const CardDetail = (props: CardDetailProps): JSX.Element =&gt; (
-  &lt;div&gt;
-    &lt;strong&gt;{props.label}:&lt;/strong&gt; {props.value}
+export const CardDetail: React.FC&lt;CardDetailProps&gt; = <span class="fstat-no" title="function not covered" >({</span> label, value }) =&gt; (
+<span class="cstat-no" title="statement not covered" >  &lt;div&gt;</span>
+    &lt;strong&gt;{label}:&lt;/strong&gt; {value}
   &lt;/div&gt;
 );
 &nbsp;</pre></td></tr></table></pre>
@@ -96,7 +96,7 @@ export const CardDetail = (props: CardDetailProps): JSX.Element =&gt; (
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2023-11-09T18:09:48.000Z
+      at 2023-11-12T20:55:31.416Z
     </div>
     <script src="../../../prettify.js"></script>
     <script>

@@ -29,7 +29,10 @@ const Details: React.FC = () => {
       {isVisible && (
         <>
           <div className="details__overlay" onClick={closeDetails} />
-          <section className="details__container">
+          <section
+            className="details__container"
+            data-testid="details-container"
+          >
             <div className="description">
               <button className="description__close" onClick={closeDetails}>
                 x

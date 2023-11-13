@@ -23,27 +23,27 @@
         </h1>
         <div class="clearfix">
           <div class="fl pad1y space-right2">
-            <span class="strong">0% </span>
+            <span class="strong">90% </span>
             <span class="quiet">Statements</span>
-            <span class="fraction">0/10</span>
+            <span class="fraction">9/10</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">0% </span>
+            <span class="strong">50% </span>
             <span class="quiet">Branches</span>
-            <span class="fraction">0/2</span>
+            <span class="fraction">1/2</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">0% </span>
+            <span class="strong">66.66% </span>
             <span class="quiet">Functions</span>
-            <span class="fraction">0/3</span>
+            <span class="fraction">2/3</span>
           </div>
 
           <div class="fl pad1y space-right2">
-            <span class="strong">0% </span>
+            <span class="strong">90% </span>
             <span class="quiet">Lines</span>
-            <span class="fraction">0/10</span>
+            <span class="fraction">9/10</span>
           </div>
         </div>
         <p class="quiet">
@@ -57,7 +57,7 @@
           </div>
         </template>
       </div>
-      <div class="status-line low"></div>
+      <div class="status-line high"></div>
       <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -96,28 +96,23 @@
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
 <a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -132,24 +127,29 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js"><span class="cstat-no" title="statement not covered" >import { NavLink, useSearchParams } from 'react-router-dom';</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { NavLink, useSearchParams } from 'react-router-dom';
 import { Character, CharactersProps } from '../../types';
-<span class="cstat-no" title="statement not covered" >import { getCharacterId } from '../../utils/getCharacterId';</span>
-<span class="cstat-no" title="statement not covered" >import './Card.css';</span>
+import { getCharacterId } from '../../utils/getCharacterId';
+import './Card.css';
 &nbsp;
-const Cards = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(p</span>rops: CharactersProps): JSX.Element =&gt; {</span>
-  const [searchParams] = <span class="cstat-no" title="statement not covered" >useSearchParams();</span>
+const Cards: React.FC&lt;CharactersProps&gt; = ({ characters }) =&gt; {
+  const [searchParams] = useSearchParams();
 &nbsp;
-  const handleClick = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >() =</span>&gt; {</span>
+  const handleClick = <span class="fstat-no" title="function not covered" >() =</span>&gt; {
 <span class="cstat-no" title="statement not covered" >    localStorage.setItem('searchUrl', searchParams.toString());</span>
   };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;ul className="cards__container"&gt;
-      {props.characters?.length &gt; 0 ? (
-        props.characters.map(<span class="fstat-no" title="function not covered" >(c</span>haracter: Character) =&gt; (
-<span class="cstat-no" title="statement not covered" >          &lt;NavLink</span>
+      {characters?.length &gt; 0 ? (
+        characters.map((character: Character) =&gt; (
+          &lt;NavLink
             className="link"
             to={`${getCharacterId(character.url)}`}
             key={getCharacterId(character.url)}
@@ -163,13 +163,13 @@ const Cards = <span class="cstat-no" title="statement not covered" ><span class=
           &lt;/NavLink&gt;
         ))
       ) : (
-        &lt;h3&gt;No results&lt;/h3&gt;
+<span class="branch-1 cbranch-no" title="branch not covered" >        &lt;h3&gt;No results&lt;/h3&gt;</span>
       )}
     &lt;/ul&gt;
   );
 };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export default Cards;</span>
+export default Cards;
 &nbsp;</pre></td></tr></table></pre>
 
       <div class="push"></div>
@@ -184,7 +184,7 @@ const Cards = <span class="cstat-no" title="statement not covered" ><span class=
         rel="noopener noreferrer"
         >istanbul</a
       >
-      at 2023-11-09T18:09:48.000Z
+      at 2023-11-12T20:55:31.416Z
     </div>
     <script src="../../../prettify.js"></script>
     <script>

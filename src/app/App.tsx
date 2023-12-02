@@ -1,13 +1,9 @@
-// import UncontrolledForm from '../pages/UncontrolledForm/UncontrolledForm';
-import MainPage from '../pages/MainPage/MainPage';
+import { RouterProvider } from 'react-router-dom';
+import router from './Routes/Routes';
 import './App.css';
 
 function App() {
-  return (
-    <>
-      <MainPage />
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;

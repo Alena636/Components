@@ -1,33 +1,35 @@
+import './UncontrolledForm.css';
+
 const UncontrolledForm: React.FC = () => {
   return (
     <form className="form">
       <label className="form__label" htmlFor="name">
         Name
-        <input type="text" id="name" />
+        <input type="text" id="name" className="form__input" />
       </label>
       <label className="form__label" htmlFor="age">
         Age
-        <input type="number" id="age" />
+        <input type="number" id="age" className="form__input" />
       </label>
       <label className="form__label" htmlFor="email">
         Email
-        <input type="email" id="email" />
+        <input type="email" id="email" className="form__input" />
       </label>
       <label className="form__label" htmlFor="password">
         Password
-        <input type="password" id="password" />
+        <input type="password" id="password" className="form__input" />
       </label>
       <label className="form__label" htmlFor="repeatPassword">
-        Repeat your password
-        <input type="password" id="repeatPassword" />
+        Repeat password
+        <input type="password" id="repeatPassword" className="form__input" />
       </label>
       <div className="form__gender">
         <p className="gender__title">Gender</p>
-        <label className="form__label" htmlFor="male">
+        <label className="form__label gender" htmlFor="male">
           Male
           <input type="radio" id="male" name="gender" />
         </label>
-        <label className="form__label" htmlFor="female">
+        <label className="form__label gender" htmlFor="female">
           Female
           <input type="radio" id="female" name="gender" />
         </label>
@@ -42,7 +44,7 @@ const UncontrolledForm: React.FC = () => {
       </label>
       <label className="form__label" htmlFor="country">
         Country
-        <input type="text" id="country" />
+        <input type="text" id="country" className="form__input" />
       </label>
       <button type="submit">Submit</button>
     </form>

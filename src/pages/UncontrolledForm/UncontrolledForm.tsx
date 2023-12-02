@@ -1,4 +1,4 @@
-const Form: React.FC = () => {
+const UncontrolledForm: React.FC = () => {
   return (
     <form className="form">
       <label>
@@ -45,4 +45,4 @@ const Form: React.FC = () => {
   );
 };
 
-export default Form;
+export default UncontrolledForm;

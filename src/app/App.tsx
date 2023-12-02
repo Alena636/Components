@@ -1,10 +1,11 @@
-import Form from '../pages/Form/Form';
+// import UncontrolledForm from '../pages/UncontrolledForm/UncontrolledForm';
+import MainPage from '../pages/MainPage/MainPage';
 import './App.css';
 
 function App() {
   return (
     <>
-      <Form />
+      <MainPage />
     </>
   );
 }

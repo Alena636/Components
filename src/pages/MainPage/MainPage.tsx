@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import './MainPage.css';
 
 const MainPage: React.FC = () => {
   return (

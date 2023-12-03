@@ -106,6 +106,7 @@ const UncontrolledForm: React.FC = () => {
           Back to Main
         </Link>
       </header>
+      <h2 className="page__title">Uncontrolled Form</h2>
       <form
         className="form"
         onSubmit={(e) => {

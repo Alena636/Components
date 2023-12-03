@@ -1,0 +1,18 @@
+.hook__header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  margin: 0 auto;
+  background-color: black;
+  width: 100vw;
+  padding: 1rem;
+}
+
+.header__link {
+  font-size: 1.5rem;
+  transition: 0.7s;
+}
+
+.header__link:hover {
+  color: aliceblue;
+}

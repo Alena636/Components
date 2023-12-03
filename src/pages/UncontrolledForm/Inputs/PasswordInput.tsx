@@ -5,7 +5,7 @@ import emptyCircle from '../../../assets/emptyCircle.png';
 import circle from '../../../assets/circle.png';
 import closedEye from '../../../assets/closedeye.png';
 import openEye from '../../../assets/openEye.png';
-
+import '../UncontrolledForm.css';
 interface PasswordProps {
   passwordRef: MutableRefObject<HTMLInputElement | null>;
   passwordRepeatRef: MutableRefObject<HTMLInputElement | null>;
@@ -25,14 +25,19 @@ function PasswordInput(props: PasswordProps) {
   const [passwordType, setPasswordType] = useState('password');
 
   return (
-    <fieldset>
+    <fieldset className="form__fieldset password">
       <div className="password__container">
-        <div>
-          <label htmlFor="password" className="form__label">
-            Password
-          </label>
+        <label htmlFor="password" className="form__label">
+          Password
+        </label>
+        <div className="password__input">
           <div className="password__input-container">
-            <input type={passwordType} id="password" ref={passwordRef} />
+            <input
+              type={passwordType}
+              id="password"
+              ref={passwordRef}
+              className="form__input"
+            />
             <button
               type="button"
               className="password__btn"
@@ -45,28 +50,33 @@ function PasswordInput(props: PasswordProps) {
               <img
                 src={passwordType === 'password' ? closedEye : openEye}
                 alt="password-type"
+                className="password__icon"
               />
             </button>
-            <p>{errorPassword ? errorPassword : ''}</p>
           </div>
+          <p className="form__error password">
+            {errorPassword ? errorPassword : ''}
+          </p>
         </div>
-        <div className="password-repeat__container">
-          <label htmlFor="password-repeat" className="form__label">
-            Repeat password
-          </label>
-          <div>
-            <input
-              type={passwordType}
-              id="password-repeat"
-              ref={passwordRepeatRef}
-              className="form_-input"
-            />
-            <p>{errorPasswordRepeat ? errorPasswordRepeat : ''}</p>
-          </div>
+      </div>
+      <div className="password__container">
+        <label htmlFor="password-repeat" className="form__label">
+          Repeat password
+        </label>
+        <div>
+          <input
+            type={passwordType}
+            id="password-repeat"
+            ref={passwordRepeatRef}
+            className="form__input"
+          />
+          <p className="form__error">
+            {errorPasswordRepeat ? errorPasswordRepeat : ''}
+          </p>
         </div>
       </div>
       {strength > 0 ? (
-        <div className="password__strength">
+        <div className="form__label strength">
           Strength
           <div className="strength__container">
             {starsArr.map((el, ind) => {

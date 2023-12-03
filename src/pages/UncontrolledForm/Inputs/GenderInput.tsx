@@ -1,12 +1,12 @@
 import { MutableRefObject } from 'react';
-
+import '../UncontrolledForm.css';
 function GenderInput(
   props: Record<'genderRef', MutableRefObject<HTMLInputElement | null>>
 ) {
   const { genderRef } = props;
 
   return (
-    <fieldset>
+    <fieldset className="form__fieldset">
       <label className="form__label">Gender</label>
       <div className="gender__container">
         <div>

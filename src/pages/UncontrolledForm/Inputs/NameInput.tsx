@@ -1,6 +1,7 @@
 import { MutableRefObject } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../app/Redux/Store/Store';
+import '../UncontrolledForm.css';
 
 function NameInput(
   props: Record<'inputRef', MutableRefObject<HTMLInputElement | null>>
@@ -9,13 +10,13 @@ function NameInput(
   const errorName = useSelector((state: RootState) => state.error.name);
 
   return (
-    <fieldset>
+    <fieldset className="form__fieldset">
       <label className="form__label" htmlFor="name">
         Name
       </label>
-      <div>
+      <div className="input__container">
         <input type="text" id="name" ref={inputRef} className="form__input" />
-        <p>{errorName ? errorName : ''}</p>
+        <p className="form__error">{errorName ? errorName : ''}</p>
       </div>
     </fieldset>
   );

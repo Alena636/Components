@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useNavigate, Link } from 'react-router-dom';
 import './UncontrolledForm.css';
 import { validation } from '../../utils/Validation/Validation';
 import {
@@ -11,7 +11,14 @@ import ConvertFileToBase64 from '../../utils/ConvertFileToBase64';
 import { setForm, setNewFormAdded } from '../../app/Redux/FormSlice';
 import { ValidationError } from 'yup';
 import { showPasswordStrength } from '../../utils/ShowPasswordStrength';
-import { RootState } from '../../app/Redux/Store/Store';
+import NameInput from './Inputs/NameInput';
+import AgeInput from './Inputs/AgeInput';
+import EmailInput from './Inputs/EmailInput';
+import PasswordInput from './Inputs/PasswordInput';
+import GenderInput from './Inputs/GenderInput';
+import TermsInput from './Inputs/TermsInput';
+import ImgInput from './Inputs/ImgInput';
+import CountryInput from './Inputs/CountryInput';
 
 const UncontrolledForm: React.FC = () => {
   const nameRef = useRef<HTMLInputElement>(null);
@@ -83,77 +90,48 @@ const UncontrolledForm: React.FC = () => {
     dispatch(setNewFormAdded(false));
   }, [dispatch]);
 
-  const errorName = useSelector((state: RootState) => state.error.name);
-  const errorAge = useSelector((state: RootState) => state.error.age);
-  const errorEmail = useSelector((state: RootState) => state.error.email);
-  const errorPassword = useSelector((state: RootState) => state.error.password);
-  const errorPasswordRepeat = useSelector(
-    (state: RootState) => state.error.passwordRepeat
-  );
-
-  const errorAccept = useSelector((state: RootState) => state.error.accept);
-  const errorImage = useSelector((state: RootState) => state.error.image);
-
   return (
-    <form
-      className="form"
-      onSubmit={(e) => {
-        e.preventDefault();
-        handleSubmit();
-      }}
-    >
-      {/* <label className="form__label" htmlFor="name">
-        Name
-        <input type="text" id="name" className="form__input" ref={nameRef} />
-        <p className="form__error">{errorName ? errorName : ''}</p>
-      </label> */}
-      {/* <label className="form__label" htmlFor="age">
-        Age
-        <input type="text" id="age" className="form__input" ref={ageRef} />
-        <p className="form__error">{errorAge? errorAge : ''}</p>
-      </label> */}
-      {/* <label className="form__label" htmlFor="email">
-        Email
-        <input type="email" id="email" className="form__input" ref={emailRef} />
-        <p className="form__error">{errorEmail? errorEmail : ''}</p>
-      </label> */}
-      {/* <label className="form__label" htmlFor="password">
-        Password
-        <input type="password" id="password" className="form__input" ref={passwordRef} />
-        <p className="form__error">{errorPassword? errorPassword : ''}</p>
-      </label>
-      <label className="form__label" htmlFor="repeatPassword">
-        Repeat password
-        <input type="password" id="repeatPassword" className="form__input" ref={passwordRepeatRef} />
-        <p className="form__error">{errorPasswordRepeat? errorPasswordRepeat : ''}</p>
-      </label> */}
-      {/* <div className="form__gender">
-        <p className="gender__title">Gender</p>
-        <label className="form__label gender" htmlFor="male">
-          Male
-          <input type="radio" id="male" name="gender" ref={genderRef} defaultChecked />
-        </label>
-        <label className="form__label gender" htmlFor="female">
-          Female
-          <input type="radio" id="female" name="gender" ref={genderRef} />
-        </label>
-      </div> */}
-      {/* <label className="form__label" htmlFor="terms">
-        <input type="checkbox" name="terms" value="agree" id="terms" ref={acceptRef} />I agree
-        to the terms and conditions
-        <p className="form__error">{errorAccept? errorAccept : ''}</p>
-      </label> */}
-      {/* <label className="form__label" htmlFor="img">
-        Upload Picture
-        <input type="file" accept=".png, .jpeg" id="img" ref={imageRef} />
-        <p className="form__error">{errorImage? errorImage : ''}</p>
-      </label> */}
-      {/* <label className="form__label" htmlFor="country">
-        Country
-        <input type="text" id="country" className="form__input" />
-      </label> */}
-      <button type="submit">Submit</button>
-    </form>
+    <>
+      <header
+        className="uncontrolled__header"
+        onClick={() => setCountriesFilteredVisible(false)}
+      >
+        <Link
+          to="/"
+          className="form__link"
+          onClick={() => {
+            dispatch(removeValidationErrors());
+          }}
+        >
+          Back to Main
+        </Link>
+      </header>
+      <form
+        className="form"
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSubmit();
+        }}
+      >
+        <NameInput inputRef={nameRef} />
+        <AgeInput inputRef={ageRef} />
+        <EmailInput inputRef={emailRef} />
+        <PasswordInput
+          passwordRef={passwordRef}
+          passwordRepeatRef={passwordRepeatRef}
+          strength={passwordStrength}
+        />
+        <GenderInput genderRef={genderRef} />
+        <TermsInput inputRef={acceptRef} />
+        <ImgInput inputRef={imageRef} />
+        <CountryInput
+          inputRef={countryRef}
+          countriesFilteredVisible={countriesFilteredVisible}
+          setCountriesFilteredVisible={setCountriesFilteredVisible}
+        />
+        <button type="submit">Submit</button>
+      </form>
+    </>
   );
 };
 

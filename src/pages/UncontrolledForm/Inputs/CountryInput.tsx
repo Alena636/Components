@@ -1,7 +1,7 @@
 import { MutableRefObject, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../app/Redux/Store/Store';
-
+import '../UncontrolledForm.css';
 interface CountryProps {
   inputRef: MutableRefObject<HTMLInputElement | null>;
   countriesFilteredVisible: boolean;
@@ -31,7 +31,7 @@ function CountryInput(props: CountryProps) {
   };
 
   return (
-    <fieldset>
+    <fieldset className="form__fieldset">
       <label htmlFor="country" className="form__label">
         Country
       </label>
@@ -41,13 +41,14 @@ function CountryInput(props: CountryProps) {
           id="country"
           ref={inputRef}
           onChange={handleChange}
+          className="form__input"
         />
         {countriesFilteredVisible &&
           countriesFiltered.map((country) => (
             <label
               htmlFor="country"
               key={country}
-              className="form__label"
+              className="label__country"
               onClick={() => {
                 if (inputRef.current) inputRef.current.value = country;
                 setCountriesFiltered([]);
@@ -56,7 +57,7 @@ function CountryInput(props: CountryProps) {
               {country}
             </label>
           ))}
-        <p>{errorCountry ? errorCountry : ''}</p>
+        <p className="form__error">{errorCountry ? errorCountry : ''}</p>
       </div>
     </fieldset>
   );

@@ -6,6 +6,7 @@ import {
 import MainPage from '../../pages/MainPage/MainPage';
 import UncontrolledForm from '../../pages/UncontrolledForm/UncontrolledForm';
 import HookForm from '../../pages/ReactHookForm/ReactHookForm';
+import ErrorPage from '../../pages/ErrorPage/ErrorPage';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -13,7 +14,7 @@ const router = createBrowserRouter(
       <Route path="/" element={<MainPage />} />
       <Route path="/uncontrolled_form" element={<UncontrolledForm />} />
       <Route path="/react_hook_form" element={<HookForm />} />
-      {/* <Route path="*" element={<ErrorPage />} /> */}
+      <Route path="*" element={<ErrorPage />} />
     </>
   )
 );

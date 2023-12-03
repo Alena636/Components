@@ -1,7 +1,13 @@
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { RootState } from '../../app/Redux/Store/Store';
+import Card from '../../widgets/Card/Card';
 import './MainPage.css';
 
 const MainPage: React.FC = () => {
+  const { formTiles, newFormAdded } = useSelector(
+    (state: RootState) => state.form
+  );
   return (
     <>
       <header className="header">
@@ -17,16 +23,18 @@ const MainPage: React.FC = () => {
         </nav>
       </header>
       <main>
-        <section className="personal_data">
-          <img className="personal_data__image" src="" alt="form_img" />
-          <ul>
-            <li className="personal_data__list-item">Name:</li>
-            <li className="personal_data__list-item">Age:</li>
-            <li className="personal_data__list-item">Email:</li>
-            <li className="personal_data__list-item">Password:</li>
-            <li className="personal_data__list-item">Gender:</li>
-            <li className="personal_data__list-item">Country:</li>
-          </ul>
+        <section className="cards">
+          {formTiles.length ? (
+            formTiles.map((card, ind) => (
+              <Card
+                key={ind}
+                card={card}
+                newFormAdded={newFormAdded && ind === 0 ? newFormAdded : false}
+              />
+            ))
+          ) : (
+            <h3 className="title">No data. Please submit the form</h3>
+          )}
         </section>
       </main>
     </>

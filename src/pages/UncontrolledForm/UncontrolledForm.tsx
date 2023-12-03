@@ -1,7 +1,6 @@
 import { useRef, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
-import './UncontrolledForm.css';
 import { validation } from '../../utils/Validation/Validation';
 import {
   removeValidationErrors,
@@ -19,6 +18,7 @@ import GenderInput from './Inputs/GenderInput';
 import TermsInput from './Inputs/TermsInput';
 import ImgInput from './Inputs/ImgInput';
 import CountryInput from './Inputs/CountryInput';
+import './UncontrolledForm.css';
 
 const UncontrolledForm: React.FC = () => {
   const nameRef = useRef<HTMLInputElement>(null);
@@ -63,7 +63,7 @@ const UncontrolledForm: React.FC = () => {
 
       dispatch(
         setForm({
-          name: nameRef.current?.value[0],
+          name: nameRef.current?.value,
           age: Number(ageRef.current?.value),
           email: emailRef.current?.value,
           password: passwordRef.current?.value,

@@ -16,3 +16,126 @@
 .header__link:hover {
   color: aliceblue;
 }
+
+.page__title {
+  font-size: 2rem;
+  padding-top: 1rem;
+}
+
+.hook__form {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  width: 40vw;
+  background-color: #5959fb;
+  padding: 1rem;
+}
+
+.form__fieldset {
+  width: 38vw;
+  display: flex;
+  justify-content: center;
+  padding-top: 2rem;
+}
+
+.form__label {
+  padding-right: 2rem;
+  font-size: 20px;
+  color: aliceblue;
+}
+
+.form__label.gender {
+  cursor: pointer;
+  justify-content: center;
+}
+
+.form__input {
+  display: block;
+  width: 20vw;
+  height: 1.3rem;
+}
+
+.input__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.gender__title {
+  font-size: 20px;
+  font-weight: bold;
+  color: aliceblue;
+}
+
+.form__error {
+  color: rgb(172, 22, 22);
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.password__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.password__input {
+  display: flex;
+  flex-direction: column;
+}
+
+.password__input-container {
+  display: flex;
+}
+
+.password__btn {
+  width: 2rem;
+  height: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.password__icon {
+  width: 2rem;
+  height: 1.6rem;
+}
+
+.form__fieldset.password {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.label__country {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: aliceblue;
+  cursor: pointer;
+}
+
+.gender__container {
+  display: flex;
+  gap: 2rem;
+}
+
+.form__label.strength {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.strength__container {
+  display: flex;
+}
+
+.strength__img {
+  width: 1.5rem;
+}
+
+.form__error.password {
+  position: relative;
+  top: 0;
+}

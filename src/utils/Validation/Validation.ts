@@ -1,6 +1,6 @@
 import { object, string, number, boolean, ref } from 'yup';
 
-export const validationSchema = object({
+export const validation = object({
   name: string()
     .required('Required')
     .strict(true)
@@ -29,14 +29,26 @@ export const validationSchema = object({
   accept: boolean().oneOf([true], 'You must accept T&C'),
   image: object({
     size: number()
-      .required('Image is required')
+      .required('Required')
       .max(150000, 'The image size must be up to 150 kB'),
 
     type: string()
-      .required('Image is required')
+      .required('Required')
       .oneOf(
         ['image/png', 'image/jpeg'],
         'The image must be in PNG or JPEG format'
       ),
   }),
+});
+
+export const passwordValidationSchema = object({
+  password: string()
+    .required('Required')
+    .matches(/^(?=.*[a-zа-я])/, 'Must contain at least one lowercase character')
+    .matches(/^(?=.*[A-ZА-Я])/, 'Must contain at least one uppercase character')
+    .matches(/^(?=.*[0-9])/, 'Must contain at least one number')
+    .matches(
+      /^(?=.*[!@#%&$^*()?><|+=])/,
+      'Must contain at least one special character'
+    ),
 });

@@ -1,14 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { FormData } from '../../types/index';
 
-const initialState = {
-  name: '',
-  age: 0,
-  email: '',
-  password: '',
-  gender: '',
-  accept: false,
-  image: '',
-  country: '',
+interface State {
+  formTiles: FormData[];
+  newFormAdded: boolean;
+}
+
+const initialState: State = {
+  formTiles: [],
+  newFormAdded: false,
 };
 
 export const FormSlice = createSlice({
@@ -16,10 +16,24 @@ export const FormSlice = createSlice({
   initialState,
   reducers: {
     setForm(state, action) {
-      console.log(state, action);
+      state.newFormAdded = true;
+      const { name, age, email, password, gender, image, country } =
+        action.payload;
+      state.formTiles.unshift({
+        name,
+        age,
+        email,
+        password,
+        gender,
+        image,
+        country,
+      });
+    },
+    setNewFormAdded(state, action) {
+      state.newFormAdded = action.payload;
     },
   },
 });
 
-export const { setForm } = FormSlice.actions;
+export const { setForm, setNewFormAdded } = FormSlice.actions;
 export default FormSlice.reducer;
